@@ -1,18 +1,20 @@
-echo off
+@echo off
+
 set PATH=%cd%\..\bin;%path%
 
 set emacs_version=24.4
 
 if not exist ..\bin (
   md ..\bin
-  mv unzip.bin unzip.exe
-  unzip bin.zip ..\bin
+  move unzip.bin unzip.exe
+  unzip -o bin.zip -d ..\bin\
+  move unzip.exe unzip.bin
 )
 
 if not exist ..\..\emacs-%emacs_version% (
 	md ..\..\emacs-%emacs_version%
-	curl -J -O http://ftp.gnu.org/gnu/emacs/windows/emacs-%emacs_version%-i686-pc-mingw32.zip
-	unzip -o emacs-%emacs_version%-i686-pc-mingw32.zip -d ..\..\emacs-%emacs_version%
+	curl -J -O http://mirror.bjtu.edu.cn/gnu/emacs/windows/emacs-%emacs_version%-bin-i686-pc-mingw32.zip
+	unzip -o emacs-%emacs_version%-bin-i686-pc-mingw32.zip -d ..\..\emacs-%emacs_version%
 )
 
 pushd ..\..
@@ -36,7 +38,7 @@ popd
 :: {{{ 设置emacs 的桌面快捷方式
   set se_name="Gnu Emacs"
   set se_path=%install_path_1%
-  set se_exe=%se_path%\emacs-24.3\bin\runemacs.exe
+  set se_exe=%se_path%\emacs-%emacs_version%\bin\runemacs.exe
 
   >>".\shortcut.vbs" echo Set wshShell = WSH.CreateObject("WScript.Shell")
   >>".\shortcut.vbs" echo strDir = wshShell.SpecialFolders("Desktop")
@@ -53,5 +55,5 @@ popd
   del /F /Q .\shortcut.vbs
 :: }}}
 
-copy bin\ctags.exe c:\windows\
+copy ..\bin\ctags.exe c:\windows\
 pause >nul

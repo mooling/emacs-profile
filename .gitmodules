@@ -10,3 +10,6 @@
 [submodule "ls/packages/solarized-emacs"]
 	path = ls/packages/solarized-emacs
 	url = https://github.com/bbatsov/solarized-emacs.git
+[submodule "ls/packages/dash.el"]
+	path = ls/packages/dash.el
+	url = https://github.com/magnars/dash.el.git

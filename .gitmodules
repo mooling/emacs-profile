@@ -1,0 +1,3 @@
+[submodule "ls/packages/helm"]
+	path = ls/packages/helm
+	url = https://github.com/emacs-helm/helm.git

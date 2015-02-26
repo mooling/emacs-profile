@@ -370,6 +370,8 @@ Do it recursively if the third argument is not nil."
 (require 'helm-config)
 
 ;;*** 5.1.8 color theme
+(add-to-list 'custom-theme-load-path "~/ls/packages/solarized-emacs") 
+(load-theme 'solarized-dark t)
 
 ;; dir /s/b *.c *.h *.cpp *.hpp >cscope.files
 ;; cscope -b -k
@@ -377,4 +379,4 @@ Do it recursively if the third argument is not nil."
 
 ;; (add-to-list 'Info-default-directory-list "~/lisp/info/")
 
-
+(toggle-frame-maximized)

@@ -1,3 +1,6 @@
 [submodule "ls/packages/helm"]
 	path = ls/packages/helm
 	url = https://github.com/emacs-helm/helm.git
+[submodule "ls/packages/projectile"]
+	path = ls/packages/projectile
+	url = https://github.com/bbatsov/projectile.git

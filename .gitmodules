@@ -4,3 +4,9 @@
 [submodule "ls/packages/projectile"]
 	path = ls/packages/projectile
 	url = https://github.com/bbatsov/projectile.git
+[submodule "ls/packages/xcscope.el"]
+	path = ls/packages/xcscope.el
+	url = https://github.com/dkogan/xcscope.el.git
+[submodule "ls/packages/solarized-emacs"]
+	path = ls/packages/solarized-emacs
+	url = https://github.com/bbatsov/solarized-emacs.git

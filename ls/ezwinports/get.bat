@@ -1,0 +1,1 @@
+wget --content-disposition --trust-server-names -i ezwinports.txt

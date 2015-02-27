@@ -15,6 +15,7 @@ if not exist ..\..\emacs-%emacs_version% (
 	md ..\..\emacs-%emacs_version%
 	curl -J -O http://mirror.bjtu.edu.cn/gnu/emacs/windows/emacs-%emacs_version%-bin-i686-pc-mingw32.zip
 	unzip -o emacs-%emacs_version%-bin-i686-pc-mingw32.zip -d ..\..\emacs-%emacs_version%
+	unzip -o depends.zip -d ..\..\emacs-%emacs_version%\bin
 )
 
 pushd ..\..
@@ -56,4 +57,5 @@ popd
 :: }}}
 
 copy ..\bin\ctags.exe c:\windows\
+
 pause >nul

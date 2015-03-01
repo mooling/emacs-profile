@@ -24,6 +24,7 @@
 (setq bookmark-default-file "~/.emacs.d/.emacs.bmk")
 (setq abbrev-file-name "~/.emacs.d/.abbrev_defs")
 (setq default-directory  "~/ls/")
+(setq exec-path (append  '("~/ls/bin") exec-path))
 
 ;;** 1.2 basic configuration
 ;; (set-foreground-color "Gray")
@@ -47,6 +48,12 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (auto-image-file-mode)
+
+;; disable line wrap
+(setq default-truncate-lines t)
+
+;; make side by side buffers function the same as the main window
+(setq truncate-partial-width-windows nil)
 
 ;; use shift+space to replace the ctrl+space to mark the region
 (global-set-key [?\S- ] 'set-mark-command)  ;; REMEMBER
@@ -369,6 +376,18 @@ Do it recursively if the third argument is not nil."
 ;;*** 5.1.6 anything
 (require 'helm-config)
 
+(require 'projectile)
+(require 'helm-projectile)
+(require 'grizzl)
+
+(projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
+(global-set-key (kbd "C-c h") 'helm-projectile)
+(setq projectile-enable-caching t)
+
+
+(require 'scala-mode2)
+
 ;;*** 5.1.8 color theme
 (add-to-list 'custom-theme-load-path "~/ls/packages/solarized-emacs") 
 (load-theme 'solarized-dark t)
@@ -377,6 +396,60 @@ Do it recursively if the third argument is not nil."
 ;; cscope -b -k
 (require 'xcscope)
 
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+
 ;; (add-to-list 'Info-default-directory-list "~/lisp/info/")
 
-(toggle-frame-maximized)
+(defun toggle-line-spacing ()
+  "Toggle line spacing between no extra space to extra half line height."
+  (interactive)
+  (if (eq line-spacing nil)
+      (setq-default line-spacing 4) ; add 4 height between lines
+    (setq-default line-spacing nil)   ; no extra heigh between lines
+    ))
+
+(defun dos2unix ()
+  "Replace DOS eolns CR LF with Unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))
+
+(defun toggle-read-novel-mode ()
+  "Setup current window to be suitable for reading long novel/article text.
+ - Line wrap at word boundaries. 
+ - Set a right margin.
+ - line spacing is increased.
+ -  variable width font is used.
+Call again to toggle back."
+  (interactive)
+  (if (null (get this-command 'state-on-p))
+      (progn
+        (set-window-margins nil 0 
+                            (if (> fill-column (window-body-width))
+                                0
+                              (progn
+                                (- (window-body-width) fill-column))))
+	(global-linum-mode -1)
+	(toggle-truncate-lines)
+        (variable-pitch-mode 1)
+        (setq line-spacing 4)
+        (setq word-wrap t)
+        (put this-command 'state-on-p t))
+    (progn
+      (set-window-margins nil 0 0)
+      (global-linum-mode t)
+      (toggle-truncate-lines)
+      (variable-pitch-mode 0)
+      (setq line-spacing nil)
+      (setq word-wrap nil)
+      (put this-command 'state-on-p nil)))
+  (redraw-frame (selected-frame)))
+
+;; Add F12 to toggle line wrap
+(global-set-key (kbd "<f12>") 'toggle-read-novel-mode)
+;; (global-set-key (kbd "<f12>") 'toggle-truncate-lines)
+
+;; (toggle-frame-maximized)
+(toggle-frame-fullscreen)  
+

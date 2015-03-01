@@ -13,3 +13,12 @@
 [submodule "ls/packages/dash.el"]
 	path = ls/packages/dash.el
 	url = https://github.com/magnars/dash.el.git
+[submodule "ls/packages/scala-mode2"]
+	path = ls/packages/scala-mode2
+	url = https://github.com/hvesalai/scala-mode2
+[submodule "ls/packages/grizzl"]
+	path = ls/packages/grizzl
+	url = https://github.com/grizzl/grizzl
+[submodule "ls/packages/emmet-mode"]
+	path = ls/packages/emmet-mode
+	url = https://github.com/smihica/emmet-mode

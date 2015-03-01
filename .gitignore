@@ -1,3 +1,4 @@
 ls/bin/
 emacs*/
 *~
+\.emacs.d/

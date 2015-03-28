@@ -72,18 +72,18 @@
 
 	`cd /usr/share/nginx/www/blog/wp-content/themes` 
 
-	[twentyeleven](https://wordpress.org/themes/twentyeleven/) : `wget https://downloads.wordpress.org/theme/twentyeleven.2.0.zip`
-	[iconic-one](http://themonic.com/iconic-one/) : `wget https://downloads.wordpress.org/theme/iconic-one.1.4.4.zip`
+	- [twentyeleven](https://wordpress.org/themes/twentyeleven/) : `wget https://downloads.wordpress.org/theme/twentyeleven.2.0.zip`
+	- [iconic-one](http://themonic.com/iconic-one/) : `wget https://downloads.wordpress.org/theme/iconic-one.1.4.4.zip`
 
 #### 安装WordPress插件
 	
 	`cd /usr/share/nginx/www/blog/wp-content/plugins`
 	
-	[jetpack](https://wordpress.org/plugins/jetpack/) : `wget https://downloads.wordpress.org/plugin/jetpack.3.4.1.zip`  
+	- [jetpack](https://wordpress.org/plugins/jetpack/) : `wget https://downloads.wordpress.org/plugin/jetpack.3.4.1.zip`  
 
 ### GitHub 原文
 	
-	[Vps_and_Wordpress.md](https://github.com/mooling/emacs-profile/blob/master/ls/docs/blog/Vps_and_Wordpress.md)
+	- [Vps_and_Wordpress.md](https://github.com/mooling/emacs-profile/blob/master/ls/docs/blog/Vps_and_Wordpress.md) 
 
     
 

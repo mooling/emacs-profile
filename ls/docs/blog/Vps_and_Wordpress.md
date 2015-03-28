@@ -63,7 +63,7 @@
      23 /** MySQL数据库密码 */
      24 define('DB_PASSWORD', 'pass');
 
-	`service nginx restart
+	`service nginx restart`  
 
 	然后进入web页面进行安装。
 
@@ -80,6 +80,10 @@
 	`cd /usr/share/nginx/www/blog/wp-content/plugins`
 	
 	[jetpack](https://wordpress.org/plugins/jetpack/) : `wget https://downloads.wordpress.org/plugin/jetpack.3.4.1.zip`  
+
+### GitHub 原文
+	
+	[Vps_and_Wordpress.md](https://github.com/mooling/emacs-profile/blob/master/ls/docs/blog/Vps_and_Wordpress.md)
 
     
 

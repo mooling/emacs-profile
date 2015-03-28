@@ -7,6 +7,9 @@
 	4. [Virtual Box](https://www.virtualbox.org/wiki/Downloads)
 	5. [Vagrant](https://www.vagrantup.com/downloads.html)
 
+### 搬运 ###
+	[链接：](http://pan.baidu.com/s/1pJ81iAJ) 密码：dfbg
+
 ### 安装过程 ###
 
 	* 下载安装 Virtual Box

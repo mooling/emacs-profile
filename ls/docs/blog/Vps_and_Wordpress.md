@@ -1,4 +1,6 @@
-### VPS准备
+# Vps和Wordpress
+
+## VPS准备
 
 最近工作需要访问谷歌，但是总是没法使用，没有办法。经同事介绍可以购买国外的VPS，经由SS转发然后即可使用谷歌了，于是乎购入RamNode、UltraVPS。
 
@@ -6,84 +8,87 @@
 
 在赵荣部落得知 [UltraVPS](http://ultravps.com) 的 [512M内存特价16$](http://www.zrblog.net/13754.html)。于是乎又购买了一个，做了这个博客，这个使用的是信用卡支付，所以购买的小伙伴们需要注意下。买的拉斯维加斯的服务器，当时看重的是时延短一般在200ms左右，但是实际欠考虑丢包比较多不稳定，平均在14的丢包率。这个也是告知Fraud，提交工单、上传身份证搞定，这家对于工单解决比较怠慢。 
 
-### 安装Nginx、mysql、php
+## 安装Nginx、mysql、php
 
-#### 安装软件，没有使用lnmp，主要还是比较信任官方的。
+### 安装软件，没有使用lnmp，主要还是比较信任官方的。
 
-	```bash
-    apt-get update  
-    apt-get install nginx  
-    apt-get install mysql-server mysql-client    
-    apt-get install php5-fpm php5-mysql  
-	```
+```bash
+apt-get update  
+apt-get install nginx  
+apt-get install mysql-server mysql-client    
+apt-get install php5-fpm php5-mysql 
+```
 
-#### 编辑 /etc/php5/fpm/php.ini
+### 编辑 /etc/php5/fpm/php.ini
 
-    查找fix_pathinfo，将前面的注释取消，并将1改为0.
+查找fix_pathinfo，将前面的注释取消，并将1改为0.
 
-    > **cgi.fix_pathinfo=0**
+    cgi.fix_pathinfo=0
 
-#### 编辑/etc/nginx/sites-available/default
+### 编辑/etc/nginx/sites-available/default
 
 	root /usr/share/nginx/www;  
 	index index.html index.htm **index.php**;  
 	location ~ \.php$ {  
-       	fastcgi_split_path_info ^(.+\.php)(/.+)$;  
-       	fastcgi_pass unix:/var/run/php5-fpm.sock;  
-       	fastcgi_index index.php;  
-		include fastcgi_params;  
+	    fastcgi_split_path_info ^(.+\.php)(/.+)$;  
+	    fastcgi_pass unix:/var/run/php5-fpm.sock;  
+	    fastcgi_index index.php;  
+	    include fastcgi_params;  
 	}
 
-#### 建立WordPress使用的库
+### 建立WordPress使用的库
 
-    `mysql -u root -p`
-	>`create database liushao_blog;`  
-	>`\q`
+    mysql -u root -p
+	>create database liushao_blog;
+	>\q
 
-#### 安装WordPress
+### 安装WordPress
 
-	```bash
-    cd /usr/share/nginx/www  
-    wget https://cn.wordpress.org/wordpress-4.1-zh_CN.tar.gz  
-    tar zvxf wordpress-4.1-zh_CN.tar.gz  
-    mv wordpress blog  
-    chown -R root:root blog/  
-    ```
+```bash  
+cd /usr/share/nginx/www    
+wget https://cn.wordpress.org/wordpress-4.1-zh_CN.tar.gz  
+tar zvxf wordpress-4.1-zh_CN.tar.gz  
+mv wordpress blog  
+chown -R root:root blog
+```
 
-#### 修改WordPress配置
+### 修改WordPress配置
 
-	`cp wp-config-sample.php wp-config.php`	
+	cp wp-config-sample.php wp-config.php
 
-     17 /** WordPress数据库的名称 */
-     18 define('DB_NAME', 'wp_blog');
-     19 
-     20 /** MySQL数据库用户名 */
-     21 define('DB_USER', 'user');
-     22 
-     23 /** MySQL数据库密码 */
-     24 define('DB_PASSWORD', 'pass');
+----------
+	17 /** WordPress数据库的名称 */
+	18 define('DB_NAME', 'wp_blog');
+	19 
+	20 /** MySQL数据库用户名 */
+	21 define('DB_USER', 'user');
+	22 
+	23 /** MySQL数据库密码 */
+	24 define('DB_PASSWORD', 'pass');
 
-	`service nginx restart`  
+----------
 
-	然后进入web页面进行安装。
+	service nginx restart
+
+然后进入web页面进行安装。
 
 
-#### 安装WordPress主题
+### 安装WordPress主题
 
-	`cd /usr/share/nginx/www/blog/wp-content/themes` 
+	cd /usr/share/nginx/www/blog/wp-content/themes
 
-	- [twentyeleven](https://wordpress.org/themes/twentyeleven/) : `wget https://downloads.wordpress.org/theme/twentyeleven.2.0.zip`
-	- [iconic-one](http://themonic.com/iconic-one/) : `wget https://downloads.wordpress.org/theme/iconic-one.1.4.4.zip`
+- [twentyeleven](https://wordpress.org/themes/twentyeleven/) : `wget https://downloads.wordpress.org/theme/twentyeleven.2.0.zip`
+- [iconic-one](http://themonic.com/iconic-one/) : `wget https://downloads.wordpress.org/theme/iconic-one.1.4.4.zip`
 
-#### 安装WordPress插件
+### 安装WordPress插件
 	
-	`cd /usr/share/nginx/www/blog/wp-content/plugins`
+	cd /usr/share/nginx/www/blog/wp-content/plugins
 	
-	- [jetpack](https://wordpress.org/plugins/jetpack/) : `wget https://downloads.wordpress.org/plugin/jetpack.3.4.1.zip`  
+- [jetpack](https://wordpress.org/plugins/jetpack/) : `wget https://downloads.wordpress.org/plugin/jetpack.3.4.1.zip`  
 
-### GitHub 原文
+## GitHub 原文
 	
-	- [Vps_and_Wordpress.md](https://github.com/mooling/emacs-profile/blob/master/ls/docs/blog/Vps_and_Wordpress.md) 
+- [Vps_and_Wordpress.md](https://github.com/mooling/emacs-profile/blob/master/ls/docs/blog/Vps_and_Wordpress.md) 
 
     
 

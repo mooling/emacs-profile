@@ -2,3 +2,4 @@ ls/bin/
 emacs*/
 *~
 \.emacs.d/
+ls/deploy/emacs-24.4-bin-i686-pc-mingw32.zip

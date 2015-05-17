@@ -22,3 +22,6 @@
 [submodule "ls/packages/emmet-mode"]
 	path = ls/packages/emmet-mode
 	url = https://github.com/smihica/emmet-mode
+[submodule "ls/packages/color-theme-sanityinc-solarized"]
+	path = ls/packages/color-theme-sanityinc-solarized
+	url = git@github.com:purcell/color-theme-sanityinc-solarized.git
